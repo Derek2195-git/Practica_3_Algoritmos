@@ -12,9 +12,13 @@ public class Dado {
         rnd = new Random();
     }
 
-    public int lanzar() {
+    private void lanzar() {
         valor = rnd.nextInt(caras) + 1;
-        return getValor();
+    }
+
+    public int tirarDado() {
+        lanzar();
+        return valor;
     }
 
     public int getValor() {
@@ -27,5 +31,10 @@ public class Dado {
 
     public void setCaras(int caras) {
         this.caras = caras;
+    }
+
+    @Override
+    public String toString() {
+        return "Dado | Valor: " + valor;
     }
 }

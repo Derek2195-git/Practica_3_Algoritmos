@@ -40,4 +40,10 @@ public class Persona {
     public boolean sigueDentroDelSistema() {
         return rondaSalida == -1;
     }
+
+    @Override
+    public String toString() {
+        return "Persona [id = " + id + ", ronda de entrada: " +
+                rondaEntrada + ", ronda de salida: " + rondaSalida + "]";
+    }
 }

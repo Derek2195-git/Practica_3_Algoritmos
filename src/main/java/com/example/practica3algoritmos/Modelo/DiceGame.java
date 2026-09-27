@@ -46,7 +46,7 @@ public class DiceGame {
 
         for (int i = jugadores.size() - 1; i >= 0; i--) {
             Jugador j = jugadores.get(i);
-            int valorDado = j.getDadoJugador().lanzar();
+            int valorDado = j.getDadoJugador().tirarDado();
             // El primer jugador tiene una pila prácticamente infitina de gente
             // esperandolo afuera
             if (i == 0) {
@@ -54,6 +54,7 @@ public class DiceGame {
                     jugadores.get(1).getColaPersonas().insertarCircular(
                             new Persona(++numeroSiguientePersona, rondaActual));
                 }
+                j.setPersonasMovidasEnRondaAnterior(valorDado);
             } else {
                 // Los demas jugadores si se revisan la cantidad de personas que posean antes de procesarlos
                 int cantidadProcesable = Math.min(valorDado, j.getColaPersonas().tamanoCola());
@@ -69,6 +70,7 @@ public class DiceGame {
                                 .insertarCircular(persona);
                     }
                 }
+                j.setPersonasMovidasEnRondaAnterior(cantidadProcesable);
             }
         }
     }
@@ -87,5 +89,13 @@ public class DiceGame {
 
     public int calcularThroughput() {
         return personasSalidas.size();
+    }
+
+    public int calcularPersonasEnElSistema() {
+        int total = 0;
+        for (int i = 1; i < jugadores.size(); i++) {
+            total += jugadores.get(i).getColaPersonas().tamanoCola();
+        }
+        return total;
     }
 }
