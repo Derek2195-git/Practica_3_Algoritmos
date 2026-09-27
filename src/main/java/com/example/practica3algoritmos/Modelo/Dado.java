@@ -13,7 +13,7 @@ public class Dado {
     }
 
     public void lanzar() {
-        valor = rnd.nextInt(6) + 1;
+        valor = rnd.nextInt(caras) + 1;
     }
 
     public int getValor() {

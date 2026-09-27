@@ -1,20 +1,26 @@
 package com.example.practica3algoritmos.Modelo;
 
 public class Jugador {
-    private String nombre;
+    private int numero;
     private Dado dadoJugador;
+    private ColaCircular<Persona> colaPersonas;
 
-    public Jugador(String nombre) {
-        this.nombre = nombre;
+    public Jugador(int numero) {
+        this.numero = numero;
         dadoJugador = new Dado();
+        colaPersonas = new ColaCircular<>();
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getNumero() {
+        return numero;
     }
 
     public Dado getDadoJugador() {
         return dadoJugador;
+    }
+
+    public ColaCircular<Persona> getColaPersonas() {
+        return colaPersonas;
     }
 
 
