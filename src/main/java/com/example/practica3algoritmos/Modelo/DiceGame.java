@@ -34,6 +34,7 @@ public class DiceGame {
 
     public void insertarPersonasIniciales() {
         for (Jugador j : jugadores) {
+            if (j.getNumero() == 1) continue;
             for (int i = 0; i < 4; i++) {
                 j.getColaPersonas().insertarCircular(
                         new Persona(++numeroSiguientePersona, 0));
@@ -74,6 +75,8 @@ public class DiceGame {
             }
         }
     }
+
+
 
     public ArrayList<Jugador> getJugadores() {
         return jugadores;

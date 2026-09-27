@@ -15,6 +15,13 @@ public class PersonaGUI extends ImageView {
         cargarImagen();
     }
 
+    public PersonaGUI(int tamanoFicha) {
+        setFitHeight(tamanoFicha);
+        setFitWidth(tamanoFicha);
+        setPreserveRatio(true);
+        cargarImagen();
+    }
+
     private void cargarImagen() {
         String ruta = "/iconos/fichaPersona.png";
         String rutaPlaceholder = "/iconos/placeholder.png";
