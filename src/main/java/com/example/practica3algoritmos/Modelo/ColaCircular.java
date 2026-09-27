@@ -1,8 +1,8 @@
 package com.example.practica3algoritmos.Modelo;
 
 public class ColaCircular<T> {
-    T[] objetos;
-    int inicio, fin, cantidad;
+    private T[] objetos;
+    private int inicio, fin, cantidad;
 
     public ColaCircular(int capacidad) {
         objetos = (T[]) new Object[capacidad];

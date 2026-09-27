@@ -12,8 +12,9 @@ public class Dado {
         rnd = new Random();
     }
 
-    public void lanzar() {
+    public int lanzar() {
         valor = rnd.nextInt(caras) + 1;
+        return getValor();
     }
 
     public int getValor() {
