@@ -42,12 +42,14 @@ public class DiceGame {
         }
     }
 
-    public void empezarRonda() {
+    public void avanzarRonda() {
         rondaActual++;
+    }
 
+    public void moverPersonas() {
         for (int i = jugadores.size() - 1; i >= 0; i--) {
             Jugador j = jugadores.get(i);
-            int valorDado = j.getDadoJugador().tirarDado();
+            int valorDado = j.getDadoJugador().getValor();
             // El primer jugador tiene una pila prácticamente infitina de gente
             // esperandolo afuera
             if (i == 0) {
@@ -74,9 +76,17 @@ public class DiceGame {
                 j.setPersonasMovidasEnRondaAnterior(cantidadProcesable);
             }
         }
+
     }
 
 
+
+
+    public void lanzarDados() {
+        for (Jugador j : jugadores) {
+            j.getDadoJugador().tirarDado();
+        }
+    }
 
     public ArrayList<Jugador> getJugadores() {
         return jugadores;

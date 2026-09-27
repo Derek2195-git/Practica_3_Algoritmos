@@ -1,4 +1,4 @@
-package com.example.practica3algoritmos.Vista;
+package com.example.practica3algoritmos.Vista.objetosGUI;
 
 import com.example.practica3algoritmos.Modelo.Jugador;
 import javafx.geometry.Pos;
@@ -23,14 +23,10 @@ public class PanelJugador {
         this.jugador = jugador;
 
         String rutaIcono = "/recursos/iconos/iconoJugador.png";
-        String rutaPlaceholder = "/iconos/placeholder.png";
+        String rutaPlaceholder = "/recursos/iconos/placeholder.png";
         ImageView icono;
 
-        try {
-            icono = new ImageView(new Image(getClass().getResource(rutaIcono).toExternalForm()));
-        } catch (Exception e) {
-            icono = new ImageView(new Image(getClass().getResource(rutaPlaceholder).toExternalForm()));
-        }
+        icono = new ImageView(new Image(getClass().getResource(rutaPlaceholder).toExternalForm()));
 
         Label labelJugador = new Label("Jugador " + jugador.getNumero());
         dado = new DadoGUI(TAMANO_DADO, jugador.getDadoJugador());

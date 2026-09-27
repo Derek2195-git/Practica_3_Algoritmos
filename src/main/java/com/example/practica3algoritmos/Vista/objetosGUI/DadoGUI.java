@@ -1,4 +1,4 @@
-package com.example.practica3algoritmos.Vista;
+package com.example.practica3algoritmos.Vista.objetosGUI;
 
 import com.example.practica3algoritmos.Modelo.Dado;
 import javafx.scene.image.Image;
@@ -16,8 +16,8 @@ public class DadoGUI extends ImageView {
     }
 
     public void actualizar() {
-        String ruta = "/iconos/dado/dado_" + dadoAMostrar.getValor() + ".png";
-        String rutaPlaceholder = "/iconos/placeholder.png";
+        String ruta = "/recursos/iconos/dado/dado_" + dadoAMostrar.getValor() + ".png";
+        String rutaPlaceholder = "/recursos/iconos/placeholder.png";
         Image imagenDado;
         try {
             imagenDado = new Image(getClass().getResource(ruta).toExternalForm());

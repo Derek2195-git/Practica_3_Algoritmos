@@ -1,4 +1,4 @@
-package com.example.practica3algoritmos.Vista;
+package com.example.practica3algoritmos.Vista.objetosGUI;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -49,6 +49,25 @@ public class ImageButton extends Button {
         }
 
     }
+    public ImageButton() {
+        super("PLACEHOLDER/NO USAR");
+        String rutaPlaceholder = "/recursos/iconos/placeholder.png";
+        try {
+            Image img = new Image(getClass().getResource(rutaPlaceholder).toExternalForm());
+            ImageView iconView = new ImageView(img);
+
+            iconView.setFitHeight(40);
+            iconView.setFitWidth(40);
+            iconView.setPreserveRatio(true);
+
+            setBackground(Background.fill(Color.TRANSPARENT));
+            setGraphic(iconView);
+            setStyle("-fx-cursor: hand");
+        } catch (RuntimeException e) {
+            System.out.println("No se pudo cargar la imagen con esta ruta: " + rutaPlaceholder);
+        }
+    }
+
 
     public void cambiarImagen(String nuevaRuta) {
 

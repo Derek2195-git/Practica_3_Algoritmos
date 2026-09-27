@@ -1,4 +1,4 @@
-package com.example.practica3algoritmos.Vista;
+package com.example.practica3algoritmos.Vista.objetosGUI;
 
 import com.example.practica3algoritmos.Modelo.Persona;
 import javafx.scene.image.Image;
