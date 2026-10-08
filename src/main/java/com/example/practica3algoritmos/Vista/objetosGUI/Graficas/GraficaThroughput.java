@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GraficaThroughput extends Grafica {
 
     public GraficaThroughput(int rondasTotales) {
-        super("Throughput del juego", "Ronda", "Throughput", crearCategorias(rondasTotales));
+        super("Throughput del juego", "Ronda", "Throughput", crearCategorias(1, rondasTotales));
 
         ejeY.setAutoRanging(false);
         ejeY.setLowerBound(0);
@@ -37,12 +37,5 @@ public class GraficaThroughput extends Grafica {
         grafica.getData().add(serie);
     }
 
-    // Lo tuve que dejar como estatico para que jalara
-    public static ArrayList<String> crearCategorias(int rondasTotales) {
-        ArrayList<String> categorias = new ArrayList<>();
-        for (int i = 0; i <= rondasTotales; i++) {
-            categorias.add(String.valueOf(i));
-        }
-        return categorias;
-    }
+
 }

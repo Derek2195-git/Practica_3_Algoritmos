@@ -14,7 +14,7 @@ public abstract class Grafica {
     protected CategoryAxis ejeX;
     protected NumberAxis ejeY;
 
-    public Grafica(String titulo, String labelX, String labelY, ArrayList<String> categorias) {
+    protected Grafica(String titulo, String labelX, String labelY, ArrayList<String> categorias) {
         ejeX = new CategoryAxis();
         ejeX.setLabel(labelX);
         ejeX.setCategories(FXCollections.observableList(categorias));
@@ -29,8 +29,19 @@ public abstract class Grafica {
         grafica.setPrefSize(500, 350);
     }
 
+    // Lo tuve que dejar como estatico para que jalara
+    protected static ArrayList<String> crearCategorias(int inicio, int fin) {
+        ArrayList<String> categorias = new ArrayList<>();
+        for (int i = inicio; i <= fin; i++) {
+            categorias.add(String.valueOf(i));
+        }
+        return categorias;
+    }
+
     // por si las dudas lo voy a regresar como Node, aunque sea un BarChart
     public Node getGrafica() {
         return grafica;
     }
+
+
 }

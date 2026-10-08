@@ -8,18 +8,7 @@ public class DiceGame {
     private int numeroSiguientePersona;
     private ArrayList<Persona> personasSalidas;
     private ArrayList<Integer> historialThroughput;
-
-
-    // Para las pruebas por mientras
-    public DiceGame(int numJugadores) {
-        jugadores = new ArrayList<>();
-        for (int i = 0; i < numJugadores; i++) {
-            jugadores.add(new Jugador(i + 1));
-        }
-        rondaActual = 0;
-        numeroSiguientePersona = 1;
-        personasSalidas = new ArrayList<>();
-    }
+    private ArrayList<Integer> historialPersonasEnSistema;
 
     public DiceGame() {
         jugadores = new ArrayList<>();
@@ -30,6 +19,7 @@ public class DiceGame {
         numeroSiguientePersona = 1;
         personasSalidas = new ArrayList<>();
         historialThroughput = new ArrayList<>();
+        historialPersonasEnSistema = new ArrayList<>();
     }
 
     public void insertarPersonasIniciales() {
@@ -78,6 +68,7 @@ public class DiceGame {
             }
         }
         historialThroughput.add(calcularThroughput());
+        historialPersonasEnSistema.add(calcularPersonasEnElSistema());
     }
 
     public void lanzarDados() {
@@ -91,6 +82,7 @@ public class DiceGame {
         numeroSiguientePersona = 0;
         personasSalidas.clear();
         historialThroughput.clear();
+        historialPersonasEnSistema.clear();
 
         for (Jugador j : jugadores) {
             j.reiniciarJugador();
@@ -125,5 +117,9 @@ public class DiceGame {
 
     public ArrayList<Integer> getHistorialThroughput() {
         return historialThroughput;
+    }
+
+    public ArrayList<Integer> getHistorialPersonasEnSistema() {
+        return historialPersonasEnSistema;
     }
 }

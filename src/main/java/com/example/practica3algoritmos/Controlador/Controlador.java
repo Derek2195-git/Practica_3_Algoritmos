@@ -2,14 +2,17 @@ package com.example.practica3algoritmos.Controlador;
 
 import com.example.practica3algoritmos.Modelo.DiceGame;
 import com.example.practica3algoritmos.Vista.VentanaJuego;
+import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaPersonasEnSistema;
 import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaThroughput;
 
 public class Controlador {
     private DiceGame juego;
     private VentanaJuego ventana;
     private GraficaThroughput graficaThroughput;
+    private GraficaPersonasEnSistema graficaPES;
     private boolean panelGraficasVisible;
     private Runnable refrescarGrafica;
+    private final int RONDAS_TOTALES = 20;
 
     // Para diferenciar si debemos lanzar o mover personas
     private boolean debeLanzar;
@@ -17,7 +20,8 @@ public class Controlador {
     public Controlador(DiceGame juego, VentanaJuego ventana) {
         this.juego = juego;
         this.ventana = ventana;
-        graficaThroughput = new GraficaThroughput(20);
+        graficaThroughput = new GraficaThroughput(RONDAS_TOTALES);
+        graficaPES = new GraficaPersonasEnSistema(RONDAS_TOTALES);
         panelGraficasVisible = false;
         refrescarGrafica = null;
 
@@ -27,6 +31,7 @@ public class Controlador {
         ventana.alReiniciarPartida(this::manejarReinicio);
         ventana.getSeccionGraficas().alMostrarAreaGrafica(this::alternarPanelGraficas);
         ventana.getSeccionGraficas().alMostrarThroughput(this::mostrarThroughput);
+        ventana.getSeccionGraficas().alMostrarDentroSistema(this::mostrarPES);
     }
 
     private void manejarAccionRonda() {
@@ -42,7 +47,7 @@ public class Controlador {
             ventana.actualizarLabelRonda(juego.getRondaActual());
             refrescarGraficaActual();
 
-            if (juego.getRondaActual() >= 20) {
+            if (juego.getRondaActual() >= RONDAS_TOTALES) {
                 ventana.cambiarVisibilidadBotonRonda(false);
                 ventana.cambiarVisibilidadBotonReiniciar(true);
             } else {
@@ -64,7 +69,8 @@ public class Controlador {
         debeLanzar = true;
         ventana.cambiarTextoBotonRonda("Tirar dados");
         ventana.cambiarVisibilidadBotonRonda(true);
-        ventana.cambiarVisibilidadBotonReiniciar(false); // corregido
+        ventana.cambiarVisibilidadBotonReiniciar(false);
+        refrescarGraficaActual();
     }
 
     private void alternarPanelGraficas() {
@@ -76,6 +82,12 @@ public class Controlador {
         graficaThroughput.actualizar(juego.getHistorialThroughput());
         ventana.getSeccionGraficas().mostrarGrafica(graficaThroughput.getGrafica());
         refrescarGrafica = this::mostrarThroughput;
+    }
+
+    private void mostrarPES() {
+        graficaPES.actualizar(juego.getHistorialPersonasEnSistema());
+        ventana.getSeccionGraficas().mostrarGrafica(graficaPES.getGrafica());
+        refrescarGrafica = this::mostrarPES;
     }
 
     private void refrescarGraficaActual() {
