@@ -125,4 +125,15 @@ public class DiceGame {
     public ArrayList<Integer> getHistorialPersonasEnSistema() {
         return historialPersonasEnSistema;
     }
+
+    public ArrayList<Integer> getTiemposEnSistema() {
+        ArrayList<Integer> tiempos = new ArrayList<>();
+        for (Persona p : personasSalidas) {
+            if (p.getRondaEntrada() > 0) {
+                tiempos.add(p.getRondaSalida() - p.getRondaEntrada());
+            }
+        }
+        return  tiempos;
+    }
+
 }

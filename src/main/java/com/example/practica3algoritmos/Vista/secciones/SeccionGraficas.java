@@ -27,7 +27,7 @@ public class SeccionGraficas extends Seccion {
         botonGraficaThroughput = new ImageButton("/recursos/iconos/botones/botonThroughput.png", 38, 102);
         botonGraficaDentroSistema = new ImageButton("/recursos/iconos/botones/botonNiS.png", 38, 102);
         botonGraficaMovimientos = new ImageButton("/recursos/iconos/botones/botonActivity.png", 38, 102);
-        botonGraficaTiempo = new ImageButton();
+        botonGraficaTiempo = new ImageButton("/recursos/iconos/botones/botonTiS.png", 38, 102);
 
 
         contenedorBotones = new VBox(5, botonGraficaThroughput, botonGraficaDentroSistema, botonGraficaMovimientos,

@@ -6,6 +6,7 @@ import com.example.practica3algoritmos.Vista.VentanaJuego;
 import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaActividad;
 import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaPersonasEnSistema;
 import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaThroughput;
+import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaTiempoEnSistema;
 
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ public class Controlador {
     private GraficaThroughput graficaThroughput;
     private GraficaPersonasEnSistema graficaPES;
     private GraficaActividad graficaActividad;
+    private GraficaTiempoEnSistema graficaTiS;
     private boolean panelGraficasVisible;
     private Runnable refrescarGrafica;
     private final int RONDAS_TOTALES = 20;
@@ -28,6 +30,7 @@ public class Controlador {
         graficaThroughput = new GraficaThroughput(RONDAS_TOTALES);
         graficaPES = new GraficaPersonasEnSistema(RONDAS_TOTALES);
         graficaActividad = new GraficaActividad(RONDAS_TOTALES, juego.getJugadores().size());
+        graficaTiS = new GraficaTiempoEnSistema(34);
         panelGraficasVisible = false;
         refrescarGrafica = null;
 
@@ -39,6 +42,7 @@ public class Controlador {
         ventana.getSeccionGraficas().alMostrarThroughput(this::mostrarThroughput);
         ventana.getSeccionGraficas().alMostrarDentroSistema(this::mostrarPES);
         ventana.getSeccionGraficas().alMostrarGraficaMovimiento(this::mostrarActividad);
+        ventana.getSeccionGraficas().alMostrarGraficaTiempo(this::mostrarTiS);
     }
 
     private void manejarAccionRonda() {
@@ -108,6 +112,12 @@ public class Controlador {
         graficaActividad.actualizar(dados, movidas);
         ventana.getSeccionGraficas().mostrarGrafica(graficaActividad.getGrafica());
         refrescarGrafica = this::mostrarActividad;
+    }
+
+    private void mostrarTiS() {
+        graficaTiS.actualizar(juego.getTiemposEnSistema());
+        ventana.getSeccionGraficas().mostrarGrafica(graficaTiS.getGrafica());
+        refrescarGrafica = this::mostrarTiS;
     }
 
     private void refrescarGraficaActual() {
