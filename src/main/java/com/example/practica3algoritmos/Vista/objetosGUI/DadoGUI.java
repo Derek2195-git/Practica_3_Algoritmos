@@ -1,30 +1,34 @@
 package com.example.practica3algoritmos.Vista.objetosGUI;
 
 import com.example.practica3algoritmos.Modelo.Dado;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.Cursor;
 
-public class DadoGUI extends ImageView {
+public class DadoGUI extends ImageButton {
     private Dado dadoAMostrar;
+    private String ruta;
 
     public DadoGUI(int tamanoDado, Dado dadoAMostrar) {
+        String rutaPlaceholder = "/recursos/iconos/placeholder.png";
+        super(rutaPlaceholder, tamanoDado, tamanoDado);
         this.dadoAMostrar = dadoAMostrar;
-        setFitHeight(tamanoDado);
-        setFitWidth(tamanoDado);
-        setPreserveRatio(true);
+        setCursor(Cursor.DEFAULT);
         actualizar();
     }
 
     public void actualizar() {
-        String ruta = "/recursos/iconos/dado/dado_" + dadoAMostrar.getValor() + ".png";
+        ruta = "/recursos/iconos/dado/dado_" + dadoAMostrar.getValor() + ".png";
         String rutaPlaceholder = "/recursos/iconos/placeholder.png";
-        Image imagenDado;
+
         try {
-            imagenDado = new Image(getClass().getResource(ruta).toExternalForm());
-            setImage(imagenDado);
-        } catch (RuntimeException e) {
-            imagenDado = new Image(getClass().getResource(rutaPlaceholder).toExternalForm());
-            setImage(imagenDado);
+            cambiarImagen(ruta);
+        } catch (Exception e) {
+            try {
+                cambiarImagen(rutaPlaceholder);
+            } catch (Exception ex) {
+                System.out.println("No se pudo generar la imagen del dado por que \n" +
+                        e.getMessage());
+            }
         }
+        setCursor(Cursor.DEFAULT);
     }
 }

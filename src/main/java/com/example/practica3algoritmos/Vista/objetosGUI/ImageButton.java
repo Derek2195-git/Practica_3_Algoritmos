@@ -1,5 +1,6 @@
 package com.example.practica3algoritmos.Vista.objetosGUI;
 
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,7 +26,8 @@ public class ImageButton extends Button {
 
             setBackground(Background.fill(Color.TRANSPARENT));
             setGraphic(iconView);
-            setStyle("-fx-cursor: hand");
+            setCursor(Cursor.HAND);
+//            setStyle("-fx-cursor: hand");
         } catch (RuntimeException e) {
             System.out.println("No se pudo cargar la imagen con esta ruta:" + rutaImagen);
         }
@@ -43,7 +45,8 @@ public class ImageButton extends Button {
 
             setBackground(Background.fill(Color.TRANSPARENT));
             setGraphic(iconView);
-            setStyle("-fx-cursor: hand");
+            setCursor(Cursor.HAND);
+//            setStyle("-fx-cursor: hand");
         } catch (RuntimeException e) {
             System.out.println("No se pudo cargar la imagen con esta ruta:" + rutaImagen);
         }
@@ -62,13 +65,12 @@ public class ImageButton extends Button {
 
             setBackground(Background.fill(Color.TRANSPARENT));
             setGraphic(iconView);
-            setStyle("-fx-cursor: hand");
+            setCursor(Cursor.HAND);
+//            setStyle("-fx-cursor: hand");
         } catch (RuntimeException e) {
             System.out.println("No se pudo cargar la imagen con esta ruta: " + rutaPlaceholder);
         }
     }
-
-
     public void cambiarImagen(String nuevaRuta) {
 
         try {
@@ -81,7 +83,8 @@ public class ImageButton extends Button {
 
             setBackground(Background.fill(Color.TRANSPARENT));
             setGraphic(iconoNuevo);
-            setStyle("-fx-cursor: hand");
+            setCursor(Cursor.HAND);
+//            setStyle("-fx-cursor: hand");
         } catch (RuntimeException e) {
             System.out.println("No se pudo cargar la imagen con esta ruta:" + nuevaRuta);
         }
