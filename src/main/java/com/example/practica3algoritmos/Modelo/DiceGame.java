@@ -29,6 +29,7 @@ public class DiceGame {
         rondaActual = 0;
         numeroSiguientePersona = 1;
         personasSalidas = new ArrayList<>();
+        historialThroughput = new ArrayList<>();
     }
 
     public void insertarPersonasIniciales() {

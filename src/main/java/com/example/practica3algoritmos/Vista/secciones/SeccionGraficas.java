@@ -2,6 +2,7 @@ package com.example.practica3algoritmos.Vista.secciones;
 
 import com.example.practica3algoritmos.Vista.objetosGUI.ImageButton;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
@@ -22,9 +23,9 @@ public class SeccionGraficas extends Seccion {
 
     @Override
     protected void crearSeccion() {
-        botonMostrarGraficas = new ImageButton("/recursos/iconos/botones/botonMostrarGraficas.png", 32, 32);
-        botonGraficaThroughput = new ImageButton();
-        botonGraficaDentroSistema = new ImageButton();
+        botonMostrarGraficas = new ImageButton("/recursos/iconos/botones/botonMostrarGraficas.png", 38, 102);
+        botonGraficaThroughput = new ImageButton("/recursos/iconos/botones/botonThroughput.png", 38, 102);
+        botonGraficaDentroSistema = new ImageButton("/recursos/iconos/botones/botonNiS.png", 38, 102);
         botonGraficaTiempo = new ImageButton();
         botonGraficaMovimientos = new ImageButton();
 
@@ -41,6 +42,10 @@ public class SeccionGraficas extends Seccion {
         contenedorPrincipal.setVisible(false);
         contenedorPrincipal.setManaged(false);
 
+    }
+
+    public void mostrarGrafica(Node grafica) {
+        areaGrafica.getChildren().setAll(grafica);
     }
 
     public void alMostrarAreaGrafica(Runnable accion){ botonMostrarGraficas.setOnAction(e -> accion.run());}
