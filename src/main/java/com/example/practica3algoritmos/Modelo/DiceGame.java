@@ -7,6 +7,7 @@ public class DiceGame {
     private int rondaActual;
     private int numeroSiguientePersona;
     private ArrayList<Persona> personasSalidas;
+    private ArrayList<Integer> historialThroughput;
 
 
     // Para las pruebas por mientras
@@ -75,7 +76,7 @@ public class DiceGame {
                 j.setPersonasMovidasEnRondaAnterior(cantidadProcesable);
             }
         }
-
+        historialThroughput.add(calcularThroughput());
     }
 
     public void lanzarDados() {
@@ -88,6 +89,7 @@ public class DiceGame {
         rondaActual = 0;
         numeroSiguientePersona = 0;
         personasSalidas.clear();
+        historialThroughput.clear();
 
         for (Jugador j : jugadores) {
             j.reiniciarJugador();
@@ -118,5 +120,9 @@ public class DiceGame {
             total += jugadores.get(i).getColaPersonas().tamanoCola();
         }
         return total;
+    }
+
+    public ArrayList<Integer> getHistorialThroughput() {
+        return historialThroughput;
     }
 }
