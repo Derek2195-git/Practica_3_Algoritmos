@@ -9,19 +9,21 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 
 public class VentanaJuego {
     private DiceGame juego;
     private SeccionJugadores seccionJugadores;
     private SeccionGraficas seccionGraficas;
     private Button botonAccionRonda;
+    private Button botonReiniciar;
+    private Label labelRonda;
 
     public VentanaJuego(DiceGame juego) {
         this.juego = juego;
@@ -30,7 +32,14 @@ public class VentanaJuego {
         seccionGraficas = new SeccionGraficas();
         botonAccionRonda = new Button("Tirar dados");
 
+        botonReiniciar = new Button("Reiniciar juego");
+        botonReiniciar.setVisible(false);
+        botonReiniciar.setManaged(false);
+
+        labelRonda = new Label("Ronda 0/20");
+
         BorderPane ventana = new BorderPane();
+        ventana.setTop(labelRonda);
         ventana.setCenter(seccionJugadores.getContenedor());
         ventana.setRight(crearAreaDerecha());
 
@@ -46,7 +55,7 @@ public class VentanaJuego {
     }
 
     private HBox crearAreaDerecha() {
-        VBox areaBotones = new VBox(10, botonAccionRonda, seccionGraficas.getBotonMostrarGraficas());
+        VBox areaBotones = new VBox(10, botonReiniciar, botonAccionRonda, seccionGraficas.getBotonMostrarGraficas());
         areaBotones.setAlignment(Pos.CENTER);
 
         HBox areaDerecha = new HBox(8, areaBotones, seccionGraficas.getContenedorPrincipal());
@@ -68,5 +77,25 @@ public class VentanaJuego {
         botonAccionRonda.setOnAction(e -> accion.run());
     }
 
+    public void cambiarTextoBotonRonda(String textoNuevo) {
+        botonAccionRonda.setText(textoNuevo);
+    }
 
+    public void alReiniciarPartida(Runnable accion) {
+        botonReiniciar.setOnAction(e -> accion.run());
+    }
+
+    public void cambiarVisibilidadBotonRonda(boolean esVisible) {
+        botonAccionRonda.setVisible(esVisible);
+        botonAccionRonda.setManaged(esVisible);
+    }
+
+    public void cambiarVisibilidadBotonReiniciar(boolean esVisible) {
+        botonReiniciar.setVisible(esVisible);
+        botonReiniciar.setManaged(esVisible);
+    }
+
+    public void actualizarLabelRonda(int rondaActual) {
+        labelRonda.setText("Ronda: " + rondaActual + " / 20");
+    }
 }

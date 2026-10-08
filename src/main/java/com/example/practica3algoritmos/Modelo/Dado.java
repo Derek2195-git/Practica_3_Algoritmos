@@ -10,6 +10,7 @@ public class Dado {
     public Dado() {
         caras = 6;
         rnd = new Random();
+        valor = 1;
     }
 
     private void lanzar() {

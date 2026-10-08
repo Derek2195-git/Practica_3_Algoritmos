@@ -9,10 +9,10 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
 public class PanelJugador {
-    private final int ALTO_ICONO = 60;
-    private final int ANCHO_ICONO = 60;
+    private final int ALTO_ICONO = 64;
+    private final int ANCHO_ICONO = 64;
     private final int TAMANO_DADO = 32;
-    private final int TAMANO_PERSONA = 16;
+    private final int TAMANO_PERSONA = 8;
 
     private Jugador jugador;
     private DadoGUI dado;
@@ -23,10 +23,9 @@ public class PanelJugador {
         this.jugador = jugador;
 
         String rutaIcono = "/recursos/iconos/iconoJugador.png";
-        String rutaPlaceholder = "/recursos/iconos/placeholder.png";
         ImageView icono;
 
-        icono = new ImageView(new Image(getClass().getResource(rutaPlaceholder).toExternalForm()));
+        icono = new ImageView(new Image(getClass().getResource(rutaIcono).toExternalForm()));
 
         Label labelJugador = new Label("Jugador " + jugador.getNumero());
         dado = new DadoGUI(TAMANO_DADO, jugador.getDadoJugador());
@@ -50,9 +49,13 @@ public class PanelJugador {
         contenedorPersonas.getChildren().clear();
 
         int cantidadPersonas = jugador.getColaPersonas().tamanoCola();
+        int cantidadPersonasMovidas = jugador.getPersonasMovidasEnRondaAnterior();
+
         for (int i = 0; i < cantidadPersonas; i++) {
+            // Verificamos si la persona a dibujar fue de las que se movieron
+            boolean esRecienMovida = (cantidadPersonas - i) <= cantidadPersonasMovidas;
             contenedorPersonas.getChildren().add(
-                    new PersonaGUI(TAMANO_PERSONA)
+                    new PersonaGUI(TAMANO_PERSONA, esRecienMovida)
             );
         }
     }

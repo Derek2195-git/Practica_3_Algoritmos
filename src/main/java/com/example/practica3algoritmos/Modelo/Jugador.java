@@ -43,4 +43,9 @@ public class Jugador {
 
     }
 
+    public void reiniciarJugador() {
+        colaPersonas.vaciar();
+        personasMovidasEnRondaAnterior = 0;
+    }
+
 }

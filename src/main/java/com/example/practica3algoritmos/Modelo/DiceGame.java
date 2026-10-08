@@ -1,6 +1,5 @@
 package com.example.practica3algoritmos.Modelo;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DiceGame {
@@ -8,6 +7,7 @@ public class DiceGame {
     private int rondaActual;
     private int numeroSiguientePersona;
     private ArrayList<Persona> personasSalidas;
+
 
     // Para las pruebas por mientras
     public DiceGame(int numJugadores) {
@@ -18,7 +18,6 @@ public class DiceGame {
         rondaActual = 0;
         numeroSiguientePersona = 1;
         personasSalidas = new ArrayList<>();
-        insertarPersonasIniciales();
     }
 
     public DiceGame() {
@@ -29,7 +28,6 @@ public class DiceGame {
         rondaActual = 0;
         numeroSiguientePersona = 1;
         personasSalidas = new ArrayList<>();
-        insertarPersonasIniciales();
     }
 
     public void insertarPersonasIniciales() {
@@ -47,6 +45,7 @@ public class DiceGame {
     }
 
     public void moverPersonas() {
+        avanzarRonda();
         for (int i = jugadores.size() - 1; i >= 0; i--) {
             Jugador j = jugadores.get(i);
             int valorDado = j.getDadoJugador().getValor();
@@ -79,13 +78,22 @@ public class DiceGame {
 
     }
 
-
-
-
     public void lanzarDados() {
         for (Jugador j : jugadores) {
             j.getDadoJugador().tirarDado();
         }
+    }
+
+    public void reiniciarJuego() {
+        rondaActual = 0;
+        numeroSiguientePersona = 0;
+        personasSalidas.clear();
+
+        for (Jugador j : jugadores) {
+            j.reiniciarJugador();
+        }
+
+        insertarPersonasIniciales();
     }
 
     public ArrayList<Jugador> getJugadores() {

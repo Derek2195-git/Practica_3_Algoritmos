@@ -57,4 +57,11 @@ public class ColaCircular<T> {
         return cantidad;
     }
 
+    public void vaciar() {
+        objetos = (T[]) new Object[objetos.length];
+        inicio = -1;
+        fin = -1;
+        cantidad = 0;
+    }
+
 }

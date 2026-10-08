@@ -5,37 +5,29 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class PersonaGUI extends ImageView {
-    private Persona personaAMostrar;
 
-    public PersonaGUI(int tamanoFicha, Persona personaAMostrar) {
-        this.personaAMostrar = personaAMostrar;
+    public PersonaGUI(int tamanoFicha, boolean haSidoMovida) {
         setFitHeight(tamanoFicha);
         setFitWidth(tamanoFicha);
         setPreserveRatio(true);
-        cargarImagen();
+        cargarImagen(haSidoMovida);
     }
 
-    public PersonaGUI(int tamanoFicha) {
-        setFitHeight(tamanoFicha);
-        setFitWidth(tamanoFicha);
-        setPreserveRatio(true);
-        cargarImagen();
-    }
-
-    private void cargarImagen() {
-        String ruta = "/iconos/fichaPersona.png";
-        String rutaPlaceholder = "/iconos/placeholder.png";
+    private void cargarImagen(boolean haSidoMovida) {
+        String rutaPlaceholder = "/recursos/iconos/placeholder.png";
+        String ruta = haSidoMovida ? "/recursos/iconos/fichaPersonaMovida2.png" : "/recursos/iconos/fichaPersona.png";
         Image imagenPersona;
         try {
             imagenPersona = new Image(getClass().getResource(ruta).toExternalForm());
             setImage(imagenPersona);
         } catch (RuntimeException e) {
-            imagenPersona = new Image(getClass().getResource(rutaPlaceholder).toExternalForm());
-            setImage(imagenPersona);
+            try {
+                imagenPersona = new Image(getClass().getResource(rutaPlaceholder).toExternalForm());
+                setImage(imagenPersona);
+            } catch (RuntimeException ex) {
+                System.out.println("No se pudo cargar ninguna imagen, revisa las rutas o la imagen");
+            }
         }
     }
 
-    public Persona getPersonaAMostrar() {
-        return personaAMostrar;
-    }
 }

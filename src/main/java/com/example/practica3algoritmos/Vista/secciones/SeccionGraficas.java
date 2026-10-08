@@ -22,7 +22,7 @@ public class SeccionGraficas extends Seccion {
 
     @Override
     protected void crearSeccion() {
-        botonMostrarGraficas = new ImageButton();
+        botonMostrarGraficas = new ImageButton("/recursos/iconos/botones/botonMostrarGraficas.png", 32, 32);
         botonGraficaThroughput = new ImageButton();
         botonGraficaDentroSistema = new ImageButton();
         botonGraficaTiempo = new ImageButton();
