@@ -1,15 +1,20 @@
 package com.example.practica3algoritmos.Controlador;
 
 import com.example.practica3algoritmos.Modelo.DiceGame;
+import com.example.practica3algoritmos.Modelo.Jugador;
 import com.example.practica3algoritmos.Vista.VentanaJuego;
+import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaActividad;
 import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaPersonasEnSistema;
 import com.example.practica3algoritmos.Vista.objetosGUI.Graficas.GraficaThroughput;
+
+import java.util.ArrayList;
 
 public class Controlador {
     private DiceGame juego;
     private VentanaJuego ventana;
     private GraficaThroughput graficaThroughput;
     private GraficaPersonasEnSistema graficaPES;
+    private GraficaActividad graficaActividad;
     private boolean panelGraficasVisible;
     private Runnable refrescarGrafica;
     private final int RONDAS_TOTALES = 20;
@@ -22,6 +27,7 @@ public class Controlador {
         this.ventana = ventana;
         graficaThroughput = new GraficaThroughput(RONDAS_TOTALES);
         graficaPES = new GraficaPersonasEnSistema(RONDAS_TOTALES);
+        graficaActividad = new GraficaActividad(RONDAS_TOTALES, juego.getJugadores().size());
         panelGraficasVisible = false;
         refrescarGrafica = null;
 
@@ -32,6 +38,7 @@ public class Controlador {
         ventana.getSeccionGraficas().alMostrarAreaGrafica(this::alternarPanelGraficas);
         ventana.getSeccionGraficas().alMostrarThroughput(this::mostrarThroughput);
         ventana.getSeccionGraficas().alMostrarDentroSistema(this::mostrarPES);
+        ventana.getSeccionGraficas().alMostrarGraficaMovimiento(this::mostrarActividad);
     }
 
     private void manejarAccionRonda() {
@@ -88,6 +95,19 @@ public class Controlador {
         graficaPES.actualizar(juego.getHistorialPersonasEnSistema());
         ventana.getSeccionGraficas().mostrarGrafica(graficaPES.getGrafica());
         refrescarGrafica = this::mostrarPES;
+    }
+
+    private void mostrarActividad() {
+        ArrayList<ArrayList<Integer>> movidas = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> dados = new ArrayList<>();
+
+        for (Jugador j : juego.getJugadores()) {
+            movidas.add(j.getHistorialMovidas());
+            dados.add(j.getHistorialDados());
+        }
+        graficaActividad.actualizar(dados, movidas);
+        ventana.getSeccionGraficas().mostrarGrafica(graficaActividad.getGrafica());
+        refrescarGrafica = this::mostrarActividad;
     }
 
     private void refrescarGraficaActual() {

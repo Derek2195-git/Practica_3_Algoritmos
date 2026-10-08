@@ -21,12 +21,14 @@ public class GraficaActividad extends Grafica {
     private ArrayList<ArrayList<Integer>> historialDados;
     private int jugadorSeleccionado;
     private boolean mostrarMovidas;
+    private final int MOSTRAR_TODOS = -1;
 
     public GraficaActividad(int rondasTotales, int numJugadores) {
         super("Actividad", "Ronda", "Cantidad", crearCategorias(1, rondasTotales));
+
         historialMovidas = new ArrayList<>();
         historialDados = new ArrayList<>();
-        jugadorSeleccionado = -1;
+        jugadorSeleccionado = MOSTRAR_TODOS;
         mostrarMovidas = true;
 
         ejeY.setAutoRanging(false);
@@ -49,7 +51,7 @@ public class GraficaActividad extends Grafica {
 
         btnMovidas.setToggleGroup(tipoGrafica);
         btnDados.setToggleGroup(tipoGrafica);
-        btnMovidas.setSelected(true);
+        btnDados.setSelected(true);
         mantenerSeleccionado(tipoGrafica);
 
         btnMovidas.setOnAction(e -> {
@@ -64,7 +66,7 @@ public class GraficaActividad extends Grafica {
 
         // parte de la derecha
         labelPromedio = new Label("0.0");
-        VBox panelDerecho = new VBox(8, btnMovidas, btnDados, new Label("Promedio"));
+        VBox panelDerecho = new VBox(8, btnDados, btnMovidas, new Label("Promedio"), labelPromedio);
         panelDerecho.setAlignment(Pos.CENTER);
         panelDerecho.setPadding(new Insets(0,0,0,8));
 
@@ -86,7 +88,7 @@ public class GraficaActividad extends Grafica {
         botonTodos.setToggleGroup(parteJugadores);
         botonTodos.setSelected(true);
         botonTodos.setOnAction(e -> {
-            jugadorSeleccionado = -1;
+            jugadorSeleccionado = MOSTRAR_TODOS;
             redibujar();
         });
         barraJugadores.getChildren().add(botonTodos);
@@ -112,12 +114,12 @@ public class GraficaActividad extends Grafica {
         XYChart.Series<String, Number> serie = new XYChart.Series<>();
         double suma = 0;
         for (int i = 0; i < valores.size(); i++) {
-            serie.getData().add(new XYChart.Data<>(String.valueOf(i), valores.get(i)));
+            serie.getData().add(new XYChart.Data<>(String.valueOf(i+1), valores.get(i)));
             suma += valores.get(i);
         }
 
         grafica.getData().clear();
-        grafica.getData().clear();
+        grafica.getData().add(serie);
 
         // me voamater
         labelPromedio.setText("6.7");
@@ -127,7 +129,7 @@ public class GraficaActividad extends Grafica {
         ArrayList<Double> valores = new ArrayList<>();
         if(historialACalcular.isEmpty()) return valores;
 
-        if(jugadorSeleccionado == -1) {
+        if(jugadorSeleccionado != MOSTRAR_TODOS) {
             for (int v : historialACalcular.get(jugadorSeleccionado)) valores.add((double) v);
             return valores;
         }
