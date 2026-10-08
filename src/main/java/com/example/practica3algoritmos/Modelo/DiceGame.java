@@ -30,6 +30,7 @@ public class DiceGame {
                         new Persona(++numeroSiguientePersona, 0));
             }
         }
+        historialPersonasEnSistema.add(calcularPersonasEnElSistema());
     }
 
     public void avanzarRonda() {
@@ -49,6 +50,7 @@ public class DiceGame {
                             new Persona(++numeroSiguientePersona, rondaActual));
                 }
                 j.setPersonasMovidasEnRondaAnterior(valorDado);
+                j.añadirActividad(valorDado, valorDado);
             } else {
                 // Los demas jugadores si se revisan la cantidad de personas que posean antes de procesarlos
                 int cantidadProcesable = Math.min(valorDado, j.getColaPersonas().tamanoCola());
@@ -65,6 +67,7 @@ public class DiceGame {
                     }
                 }
                 j.setPersonasMovidasEnRondaAnterior(cantidadProcesable);
+                j.añadirActividad(valorDado, cantidadProcesable);
             }
         }
         historialThroughput.add(calcularThroughput());

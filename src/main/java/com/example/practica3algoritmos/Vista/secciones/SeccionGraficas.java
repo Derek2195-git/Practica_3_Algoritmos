@@ -26,11 +26,12 @@ public class SeccionGraficas extends Seccion {
         botonMostrarGraficas = new ImageButton("/recursos/iconos/botones/botonMostrarGraficas.png", 38, 102);
         botonGraficaThroughput = new ImageButton("/recursos/iconos/botones/botonThroughput.png", 38, 102);
         botonGraficaDentroSistema = new ImageButton("/recursos/iconos/botones/botonNiS.png", 38, 102);
+        botonGraficaMovimientos = new ImageButton("/recursos/iconos/botones/botonActivity.png", 38, 102);
         botonGraficaTiempo = new ImageButton();
-        botonGraficaMovimientos = new ImageButton();
 
-        contenedorBotones = new VBox(5, botonGraficaThroughput, botonGraficaDentroSistema,
-                botonGraficaTiempo, botonGraficaMovimientos);
+
+        contenedorBotones = new VBox(5, botonGraficaThroughput, botonGraficaDentroSistema, botonGraficaMovimientos,
+                botonGraficaTiempo  );
         contenedorBotones.setAlignment(Pos.CENTER);
 
         areaGrafica = new VBox();
