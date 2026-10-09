@@ -64,4 +64,16 @@ public class ColaCircular<T> {
         cantidad = 0;
     }
 
+    public T peekObjeto(int indice) {
+        if (indice < 0 || indice >= cantidad) return null;
+        int posicion = inicio + indice;
+        // Si la posición es mayor al tamaño, simplemente le restamos el tamaño para que sea "circular"
+        if (posicion >= objetos.length) posicion -= objetos.length;
+        return objetos[posicion];
+    }
+
+    public T peek() {
+        return objetos[cantidad];
+    }
+
 }

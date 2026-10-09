@@ -5,24 +5,37 @@ import javafx.scene.image.ImageView;
 
 public class PersonaGUI extends ImageView {
 
-    public PersonaGUI(int tamanoFicha, boolean haSidoMovida) {
+    public enum TipoFicha {
+        NORMAL("/recursos/iconos/fichaPersona.png"),
+        MOVIDA("/recursos/iconos/fichaPersonaMovida.png"),
+        BASE("/recursos/iconos/fichaPersonaBase.png");
+
+        private final String ruta;
+
+        TipoFicha(String ruta) {
+            this.ruta = ruta;
+        }
+
+        public String getRuta() {
+            return ruta;
+        }
+    }
+
+
+    public PersonaGUI(int tamanoFicha, TipoFicha tipo) {
         setFitHeight(tamanoFicha);
         setFitWidth(tamanoFicha);
         setPreserveRatio(true);
-        cargarImagen(haSidoMovida);
+        cargarImagen(tipo);
     }
 
-    private void cargarImagen(boolean haSidoMovida) {
+    private void cargarImagen(TipoFicha tipo) {
         String rutaPlaceholder = "/recursos/iconos/placeholder.png";
-        String ruta = haSidoMovida ? "/recursos/iconos/fichaPersona.png" : "/recursos/iconos/fichaPersonaMovida.png";
-        Image imagenPersona;
         try {
-            imagenPersona = new Image(getClass().getResource(ruta).toExternalForm());
-            setImage(imagenPersona);
+            setImage(new Image(getClass().getResource(tipo.getRuta()).toExternalForm()));
         } catch (RuntimeException e) {
             try {
-                imagenPersona = new Image(getClass().getResource(rutaPlaceholder).toExternalForm());
-                setImage(imagenPersona);
+                setImage(new Image(getClass().getResource(tipo.getRuta()).toExternalForm()));
             } catch (RuntimeException ex) {
                 System.out.println("No se pudo cargar ninguna imagen, revisa las rutas o la imagen");
             }

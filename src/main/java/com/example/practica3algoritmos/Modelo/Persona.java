@@ -30,7 +30,7 @@ public class Persona {
     }
 
     public void setRondaEntrada(int rondaEntrada) {
-        this.rondaSalida = rondaEntrada;
+        this.rondaEntrada = rondaEntrada;
     }
 
     public void setRondaSalida(int rondaSalida) {
@@ -40,6 +40,8 @@ public class Persona {
     public boolean sigueDentroDelSistema() {
         return rondaSalida == -1;
     }
+
+    public boolean esPersonaBase() { return rondaEntrada == 0; }
 
     @Override
     public String toString() {

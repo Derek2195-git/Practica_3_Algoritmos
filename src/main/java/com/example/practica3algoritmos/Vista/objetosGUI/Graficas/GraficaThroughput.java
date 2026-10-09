@@ -1,6 +1,8 @@
 package com.example.practica3algoritmos.Vista.objetosGUI.Graficas;
 
+import javafx.geometry.Pos;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
@@ -28,6 +30,18 @@ public class GraficaThroughput extends Grafica {
             XYChart.Data<String, Number> dato =
                     new XYChart.Data<>(String.valueOf(i + 1), historial.get(i));
 
+            boolean esUltimaBarra = (i == historial.size() - 1);
+            if (esUltimaBarra) {
+                String cantidadPersonas = String.valueOf(historial.get(i));
+                dato.nodeProperty().addListener(((observableValue, ant, n) -> {
+                    if (n instanceof StackPane barra) {
+                        Text labelCantidad = new Text(cantidadPersonas);
+                        labelCantidad.getStyleClass().add("etiqueta-barra");
+                        StackPane.setAlignment(labelCantidad, Pos.TOP_CENTER);
+                        barra.getChildren().add(labelCantidad);
+                    }
+                }));
+            }
             // Luego dejo de escribir la cantidad de personas
 
             serie.getData().add(dato);

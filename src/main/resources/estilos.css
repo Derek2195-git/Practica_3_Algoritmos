@@ -54,8 +54,23 @@
     -fx-text-fill: #282a36;
 }
 
-/* Botones de las graficas de actividad */
+/* Para los botones de imagen por que se siguen mostrando con color de fondo */
+.boton-imagen,
+.boton-imagen:hover,
+.boton-imagen:pressed,
+.boton-imagen:armed,
+.boton-imagen:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
 
+.boton-imagen:hover {
+    -fx-opacity: 0.85;
+}
+
+
+/* Botones de las graficas de actividad */
 .toggle-button {
     -fx-background-color: #44475a;
     -fx-text-fill: #f8f8f2;
@@ -121,4 +136,10 @@
 }
 .chart-bar {
     -fx-bar-fill: #bd93f9;
+}
+
+.label-barra {
+    -fx-fill: #282a36;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
 }

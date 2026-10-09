@@ -31,10 +31,10 @@ public class ImageButton extends Button {
             setBackground(Background.fill(Color.TRANSPARENT));
             setGraphic(iconView);
             setCursor(Cursor.HAND);
-//            setStyle("-fx-cursor: hand");
         } catch (RuntimeException e) {
             System.out.println("No se pudo cargar la imagen con esta ruta:" + rutaImagen);
         }
+        getStyleClass().add("boton-imagen");
 
     }
     public ImageButton(String texto, String rutaImagen) {
@@ -52,11 +52,10 @@ public class ImageButton extends Button {
             setBackground(Background.fill(Color.TRANSPARENT));
             setGraphic(iconView);
             setCursor(Cursor.HAND);
-//            setStyle("-fx-cursor: hand");
         } catch (RuntimeException e) {
             System.out.println("No se pudo cargar la imagen con esta ruta:" + rutaImagen);
         }
-
+        getStyleClass().add("boton-imagen");
     }
     public ImageButton() {
         super("PLACEHOLDER/NO USAR");
@@ -72,10 +71,10 @@ public class ImageButton extends Button {
             setBackground(Background.fill(Color.TRANSPARENT));
             setGraphic(iconView);
             setCursor(Cursor.HAND);
-//            setStyle("-fx-cursor: hand");
         } catch (RuntimeException e) {
             System.out.println("No se pudo cargar la imagen con esta ruta: " + rutaPlaceholder);
         }
+        getStyleClass().add("boton-imagen");
     }
 
     public void cambiarImagen(String nuevaRuta) {

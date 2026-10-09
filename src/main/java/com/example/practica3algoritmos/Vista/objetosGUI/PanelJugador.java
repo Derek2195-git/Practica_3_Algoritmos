@@ -2,6 +2,7 @@ package com.example.practica3algoritmos.Vista.objetosGUI;
 
 import com.example.practica3algoritmos.Modelo.Dado;
 import com.example.practica3algoritmos.Modelo.Jugador;
+import com.example.practica3algoritmos.Modelo.Persona;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -69,10 +70,18 @@ public class PanelJugador {
         int cantidadPersonasMovidas = jugador.getPersonasMovidasEnRondaAnterior();
 
         for (int i = 0; i < cantidadPersonas; i++) {
-            // Verificamos si la persona a dibujar fue de las que se movieron
-            boolean esRecienMovida = (cantidadPersonas - i) <= cantidadPersonasMovidas;
+
+            Persona persona = jugador.getColaPersonas().peekObjeto(i);
+            PersonaGUI.TipoFicha tipo;
+            if (persona.esPersonaBase()) {
+                tipo = PersonaGUI.TipoFicha.BASE;
+            } else if ((cantidadPersonas - i) <= cantidadPersonasMovidas) {
+                tipo = PersonaGUI.TipoFicha.MOVIDA;
+            } else {
+                tipo = PersonaGUI.TipoFicha.NORMAL;
+            }
             contenedorPersonas.getChildren().add(
-                    new PersonaGUI(TAMANO_PERSONA, esRecienMovida)
+                    new PersonaGUI(TAMANO_PERSONA, tipo)
             );
         }
     }

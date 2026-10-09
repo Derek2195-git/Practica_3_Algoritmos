@@ -137,7 +137,7 @@ public class DiceGame {
     public ArrayList<Integer> getTiemposEnSistema() {
         ArrayList<Integer> tiempos = new ArrayList<>();
         for (Persona p : personasSalidas) {
-            if (p.getRondaEntrada() > 0) {
+            if (!p.esPersonaBase()) {
                 tiempos.add(p.getRondaSalida() - p.getRondaEntrada());
             }
         }

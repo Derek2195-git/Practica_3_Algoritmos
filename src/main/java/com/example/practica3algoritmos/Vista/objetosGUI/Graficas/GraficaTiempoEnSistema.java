@@ -28,7 +28,7 @@ public class GraficaTiempoEnSistema extends Grafica {
 
         int total = Math.min(tiempos.size(), maxPersonas);
         for (int i = 0; i < total; i++) {
-            serie.getData().add(new XYChart.Data<>(String.valueOf(i), tiempos.get(i)));
+            serie.getData().add(new XYChart.Data<>(String.valueOf(i+1), tiempos.get(i)));
         }
 
         grafica.getData().clear();
