@@ -29,7 +29,7 @@ public class GraficaActividad extends Grafica {
         historialMovidas = new ArrayList<>();
         historialDados = new ArrayList<>();
         jugadorSeleccionado = MOSTRAR_TODOS;
-        mostrarMovidas = true;
+        mostrarMovidas = false;
 
         ejeY.setAutoRanging(false);
         ejeY.setLowerBound(0);
@@ -122,7 +122,7 @@ public class GraficaActividad extends Grafica {
         grafica.getData().add(serie);
 
         // me voamater
-        labelPromedio.setText("6.7");
+        labelPromedio.setText(String.format("%.1f", valores.isEmpty() ? 0 : suma / valores.size()));
     }
 
     private ArrayList<Double> calcularValores(ArrayList<ArrayList<Integer>> historialACalcular) {

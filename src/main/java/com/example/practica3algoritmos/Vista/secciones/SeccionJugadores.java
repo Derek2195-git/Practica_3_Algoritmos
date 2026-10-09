@@ -1,13 +1,15 @@
 package com.example.practica3algoritmos.Vista.secciones;
 
-import com.example.practica3algoritmos.Modelo.DiceGame;
+import com.example.practica3algoritmos.Modelo.Dado;
 import com.example.practica3algoritmos.Modelo.Jugador;
 import com.example.practica3algoritmos.Vista.objetosGUI.PanelJugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
+import java.util.function.BiConsumer;
 
 public class SeccionJugadores extends Seccion {
     private ArrayList<PanelJugador> panelJugadores;
@@ -18,6 +20,20 @@ public class SeccionJugadores extends Seccion {
         this.jugadores= jugadores;
         panelJugadores = new ArrayList<>();
         crearSeccion();
+    }
+
+    public void alSeleccionarDado(BiConsumer<Jugador, Dado> accion) {
+        for (PanelJugador jugador : panelJugadores) {
+            jugador.alSeleccionarDado(dado -> {
+                accion.accept(jugador.getJugador(), dado);
+            });
+        }
+    }
+
+    public void resaltarDado(Dado dado) {
+        for (PanelJugador jugador : panelJugadores) {
+            jugador.resaltarDado(dado);
+        }
     }
 
     @Override
@@ -36,21 +52,19 @@ public class SeccionJugadores extends Seccion {
             int fila, columna;
 
             // Para darle una estetica parecida al juego original, voy a intentar hacerlo en el mismo orden
-            if (numero <= 4) {
+            if (numero <= 5) {
                 fila = 0;
                 columna = numero - 1;
-            } else if (numero == 5) {
+            } else if (numero == 6) {
                 fila = 1;
                 columna = 4;
-            } else if (numero == 6) {
-                fila = 2;
-                columna = 4;
             } else {
-                fila = 3;
+                fila = 2;
                 columna = 4 - (numero - 7);
             }
 
             cuadricula.add(panel.getContenedor(), columna, fila);
+            GridPane.setValignment(panel.getContenedor(), VPos.TOP);
         }
     }
 

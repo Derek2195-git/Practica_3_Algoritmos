@@ -1,0 +1,16 @@
+
+
+
+
+.dado-seleccionado {
+    -fx-border-color: #EF9F27;
+    -fx-border-width: 3;
+    -fx-border-radius: 6;
+}
+
+.ranura-dado {
+    -fx-border-color: #888780;
+    -fx-border-style: dashed;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+}

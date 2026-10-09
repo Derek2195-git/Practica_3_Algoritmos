@@ -44,7 +44,7 @@ public class VentanaJuego {
         ventana.setRight(crearAreaDerecha());
 
         Scene escena = new Scene(ventana, 800, 600);
-        //escena.getStylesheets().add(getClass().getResource("/estilos.css").toExternalForm());
+        escena.getStylesheets().add(getClass().getResource("/estilos.css").toExternalForm());
 
         Stage stage = new Stage();
         stage.setScene(escena);

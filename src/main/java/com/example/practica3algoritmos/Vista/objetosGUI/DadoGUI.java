@@ -1,6 +1,7 @@
 package com.example.practica3algoritmos.Vista.objetosGUI;
 
 import com.example.practica3algoritmos.Modelo.Dado;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 
 public class DadoGUI extends ImageButton {
@@ -10,6 +11,7 @@ public class DadoGUI extends ImageButton {
     public DadoGUI(int tamanoDado, Dado dadoAMostrar) {
         String rutaPlaceholder = "/recursos/iconos/placeholder.png";
         super(rutaPlaceholder, tamanoDado, tamanoDado);
+        setPadding(Insets.EMPTY);
         this.dadoAMostrar = dadoAMostrar;
         setCursor(Cursor.DEFAULT);
         actualizar();
@@ -31,4 +33,21 @@ public class DadoGUI extends ImageButton {
         }
         setCursor(Cursor.DEFAULT);
     }
+
+    public void alSeleccionarDado(Runnable accion) {
+        setOnAction(e -> accion.run());
+    }
+
+    public Dado getDadoAMostrar() {
+        return dadoAMostrar;
+    }
+
+    public void iluminarDado(boolean haSidoSeleccionado) {
+        if (haSidoSeleccionado) {
+            if (!getStyleClass().contains("dado-seleccionado")) getStyleClass().add("dado-seleccionado");
+        } else {
+            getStyleClass().remove("dado-seleccionado");
+        }
+    }
+
 }

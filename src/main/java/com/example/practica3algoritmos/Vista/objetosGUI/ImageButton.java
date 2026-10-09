@@ -8,6 +8,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 
 public class ImageButton extends Button {
+    private int alto;
+    private int ancho;
     /**
      * Crea un boton el cual es representado por una imagen
      * @param rutaImagen Ruta a la imagen, sea un archivo .png, .jpg, .jpeg, etc.
@@ -16,6 +18,8 @@ public class ImageButton extends Button {
      */
     public ImageButton(String rutaImagen, int alto, int ancho) {
         super();
+        this.alto = alto;
+        this.ancho = ancho;
         try {
             Image img = new Image(getClass().getResource(rutaImagen).toExternalForm());
             ImageView iconView = new ImageView(img);
@@ -35,12 +39,14 @@ public class ImageButton extends Button {
     }
     public ImageButton(String texto, String rutaImagen) {
         super(texto);
+        ancho = 40;
+        alto = 40;
         try {
             Image img = new Image(getClass().getResource(rutaImagen).toExternalForm());
             ImageView iconView = new ImageView(img);
 
-            iconView.setFitHeight(40);
-            iconView.setFitWidth(40);
+            iconView.setFitHeight(alto);
+            iconView.setFitWidth(ancho);
             iconView.setPreserveRatio(true);
 
             setBackground(Background.fill(Color.TRANSPARENT));
@@ -59,8 +65,8 @@ public class ImageButton extends Button {
             Image img = new Image(getClass().getResource(rutaPlaceholder).toExternalForm());
             ImageView iconView = new ImageView(img);
 
-            iconView.setFitHeight(40);
-            iconView.setFitWidth(40);
+            iconView.setFitHeight(alto);
+            iconView.setFitWidth(ancho);
             iconView.setPreserveRatio(true);
 
             setBackground(Background.fill(Color.TRANSPARENT));
@@ -71,14 +77,15 @@ public class ImageButton extends Button {
             System.out.println("No se pudo cargar la imagen con esta ruta: " + rutaPlaceholder);
         }
     }
+
     public void cambiarImagen(String nuevaRuta) {
 
         try {
             Image img = new Image(getClass().getResource(nuevaRuta).toExternalForm());
             ImageView iconoNuevo = new ImageView(img);
 
-            iconoNuevo.setFitHeight(40);
-            iconoNuevo.setFitWidth(40);
+            iconoNuevo.setFitHeight(alto);
+            iconoNuevo.setFitWidth(ancho);
             iconoNuevo.setPreserveRatio(true);
 
             setBackground(Background.fill(Color.TRANSPARENT));

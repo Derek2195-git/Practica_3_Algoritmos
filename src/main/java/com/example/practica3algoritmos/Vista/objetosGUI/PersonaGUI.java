@@ -1,6 +1,5 @@
 package com.example.practica3algoritmos.Vista.objetosGUI;
 
-import com.example.practica3algoritmos.Modelo.Persona;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -15,7 +14,7 @@ public class PersonaGUI extends ImageView {
 
     private void cargarImagen(boolean haSidoMovida) {
         String rutaPlaceholder = "/recursos/iconos/placeholder.png";
-        String ruta = haSidoMovida ? "/recursos/iconos/fichaPersonaMovida2.png" : "/recursos/iconos/fichaPersona.png";
+        String ruta = haSidoMovida ? "/recursos/iconos/fichaPersona.png" : "/recursos/iconos/fichaPersonaMovida.png";
         Image imagenPersona;
         try {
             imagenPersona = new Image(getClass().getResource(ruta).toExternalForm());

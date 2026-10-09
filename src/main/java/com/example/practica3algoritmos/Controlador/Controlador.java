@@ -1,5 +1,6 @@
 package com.example.practica3algoritmos.Controlador;
 
+import com.example.practica3algoritmos.Modelo.Dado;
 import com.example.practica3algoritmos.Modelo.DiceGame;
 import com.example.practica3algoritmos.Modelo.Jugador;
 import com.example.practica3algoritmos.Vista.VentanaJuego;
@@ -20,6 +21,8 @@ public class Controlador {
     private boolean panelGraficasVisible;
     private Runnable refrescarGrafica;
     private final int RONDAS_TOTALES = 20;
+    private Dado dadoSeleccionado;
+    private Jugador jugadorOrigen;
 
     // Para diferenciar si debemos lanzar o mover personas
     private boolean debeLanzar;
@@ -43,6 +46,7 @@ public class Controlador {
         ventana.getSeccionGraficas().alMostrarDentroSistema(this::mostrarPES);
         ventana.getSeccionGraficas().alMostrarGraficaMovimiento(this::mostrarActividad);
         ventana.getSeccionGraficas().alMostrarGraficaTiempo(this::mostrarTiS);
+        ventana.getSeccionJugadores().alSeleccionarDado(this::manejarClickDado);
     }
 
     private void manejarAccionRonda() {
@@ -73,6 +77,7 @@ public class Controlador {
     }
 
     private void manejarReinicio() {
+        deseleccionar();
         juego.reiniciarJuego();
         ventana.getSeccionJugadores().redibujarSeccion();
         ventana.actualizarLabelRonda(juego.getRondaActual());
@@ -124,5 +129,39 @@ public class Controlador {
         if (refrescarGrafica != null) {
             refrescarGrafica.run();
         }
+    }
+
+    private void manejarClickDado(Jugador jugador, Dado dado) {
+        if (dado != null && dado == dadoSeleccionado) {
+            deseleccionar();
+            return;
+        }
+
+        if (dadoSeleccionado == null) {
+            if (dado != null) seleccionar(jugador, dado);
+            return;
+        }
+
+        if (jugador == jugadorOrigen) {
+            if (dado != null) seleccionar(jugador, dado);
+            return;
+        }
+
+        juego.moverDados(dadoSeleccionado, jugadorOrigen, jugador);
+        deseleccionar();
+        ventana.getSeccionJugadores().redibujarSeccion();
+
+    }
+
+    private void deseleccionar() {
+        dadoSeleccionado = null;
+        jugadorOrigen = null;
+        ventana.getSeccionJugadores().resaltarDado(null);
+    }
+
+    private void seleccionar(Jugador jugador, Dado dado) {
+        dadoSeleccionado = dado;
+        jugadorOrigen = jugador;
+        ventana.getSeccionJugadores().resaltarDado(dado);
     }
 }
