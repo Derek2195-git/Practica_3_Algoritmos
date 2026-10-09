@@ -6,6 +6,7 @@ import com.example.practica3algoritmos.Vista.objetosGUI.PanelJugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
@@ -73,6 +74,11 @@ public class SeccionJugadores extends Seccion {
         for (PanelJugador panel : panelJugadores) {
             panel.redibujar();
         }
+    }
+
+    public void agregarACelda(Node nodo, int columna, int fila) {
+        GridPane.setValignment(nodo, VPos.BOTTOM);
+        cuadricula.add(nodo, columna, fila);
     }
 
     public GridPane getContenedor() {

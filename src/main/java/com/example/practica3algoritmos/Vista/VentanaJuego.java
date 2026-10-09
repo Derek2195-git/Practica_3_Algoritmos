@@ -3,6 +3,7 @@ package com.example.practica3algoritmos.Vista;
 import com.example.practica3algoritmos.Modelo.DiceGame;
 import com.example.practica3algoritmos.Vista.secciones.SeccionGraficas;
 import com.example.practica3algoritmos.Vista.secciones.SeccionJugadores;
+import com.example.practica3algoritmos.Vista.secciones.SeccionSalida;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 
 public class VentanaJuego {
     private DiceGame juego;
+    private SeccionSalida seccionSalida;
     private SeccionJugadores seccionJugadores;
     private SeccionGraficas seccionGraficas;
     private Button botonAccionRonda;
@@ -27,7 +29,10 @@ public class VentanaJuego {
 
         seccionJugadores = new SeccionJugadores(juego.getJugadores());
         seccionGraficas = new SeccionGraficas();
+        seccionSalida = new SeccionSalida(juego.getPersonasSalidas());
+        seccionJugadores.agregarACelda(seccionSalida.getContenedor(), 0, 2);
         botonAccionRonda = new Button("Tirar dados");
+
 
         botonReiniciar = new Button("Reiniciar juego");
         botonReiniciar.setVisible(false);
@@ -73,6 +78,10 @@ public class VentanaJuego {
 
     public SeccionGraficas getSeccionGraficas() {
         return seccionGraficas;
+    }
+
+    public SeccionSalida getSeccionSalida() {
+        return seccionSalida;
     }
 
     public void alHacerAccion(Runnable accion) {
