@@ -57,6 +57,7 @@ public class PanelJugador {
 
         contenedor = new VBox(4, labelJugador, icono, contenedorDados, contenedorPersonas);
         contenedor.setAlignment(Pos.CENTER);
+        contenedor.getStyleClass().add("panel-jugador");
         redibujarDados();
     }
 

@@ -1,8 +1,6 @@
 package com.example.practica3algoritmos.Vista;
 
 import com.example.practica3algoritmos.Modelo.DiceGame;
-import com.example.practica3algoritmos.Modelo.Jugador;
-import com.example.practica3algoritmos.Vista.objetosGUI.PanelJugador;
 import com.example.practica3algoritmos.Vista.secciones.SeccionGraficas;
 import com.example.practica3algoritmos.Vista.secciones.SeccionJugadores;
 import javafx.geometry.Insets;
@@ -11,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -38,9 +35,14 @@ public class VentanaJuego {
 
         labelRonda = new Label("Ronda 0/20");
 
+        botonAccionRonda.getStyleClass().add("boton-accion");
+        botonReiniciar.getStyleClass().add("boton-accion");
+        labelRonda.getStyleClass().add("label-ronda");
+        VBox zonaCentro = new VBox(labelRonda, seccionJugadores.getContenedor());
+        zonaCentro.setAlignment(Pos.CENTER);
+
         BorderPane ventana = new BorderPane();
-        ventana.setTop(labelRonda);
-        ventana.setCenter(seccionJugadores.getContenedor());
+        ventana.setCenter(zonaCentro);
         ventana.setRight(crearAreaDerecha());
 
         Scene escena = new Scene(ventana, 800, 600);

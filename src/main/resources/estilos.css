@@ -1,16 +1,124 @@
 
+/* Voy a poner los colores aqui y lentamente pornerlos al resto del documento
+
+    Siguiendo la paleta de colores de "Dracula":
+
+    fondo: #282a36;
+    fondo-oscuro: #21222c;
+    linea: #44475a;
+    texto: #f8f8f2;
+    comentario: #6272a4;
+    morado: #bd93f9;
+    rosa: #ff79c6;
+    cyan: #8be9fd;
+*/
 
 
+.root {
+    -fx-background-color: #282a36;
+    -fx-base: #44475a;
+    -fx-background: #282a36;
+    -fx-accent: #bd93f9;
+    -fx-focus-color: #bd93f9;
+    -fx-faint-focus-color: transparent;
+    -fx-font-size: 13px;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #f8f8f2;
+}
+
+.label-ronda {
+    -fx-text-fill: #8be9fd;
+    -fx-font-size: 16px;
+    -fx-padding: 8 12 8 12;
+}
+
+/* Botones */
+.boton-accion {
+    -fx-background-color: #44475a;
+    -fx-text-fill: #f8f8f2;
+    -fx-background-radius: 6;
+    -fx-border-color: #bd93f9;
+    -fx-border-radius: 6;
+    -fx-padding: 6 14 6 14;
+    -fx-cursor: hand;
+}
+.boton-accion:hover {
+    -fx-background-color: #bd93f9;
+    -fx-text-fill: #282a36;
+}
+.boton-accion:pressed {
+    -fx-background-color: #ff79c6;
+    -fx-text-fill: #282a36;
+}
+
+/* Botones de las graficas de actividad */
+
+.toggle-button {
+    -fx-background-color: #44475a;
+    -fx-text-fill: #f8f8f2;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+.toggle-button:hover {
+    -fx-background-color: #6272a4;
+}
+.toggle-button:selected {
+    -fx-background-color: #bd93f9;
+    -fx-text-fill: #282a36;
+}
+
+/* Paneles de los jugadores */
+.panel-jugador {
+    -fx-background-color: #f8f8f2;
+    -fx-background-radius: 10;
+    -fx-padding: 6;
+}
 
 .dado-seleccionado {
-    -fx-border-color: #EF9F27;
-    -fx-border-width: 3;
+    -fx-border-color: #ff79c6;
+    -fx-border-width: 2;
     -fx-border-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(255, 121, 198, 0.8), 8, 0.4, 0, 0);
 }
 
 .ranura-dado {
-    -fx-border-color: #888780;
+    -fx-border-color: #6272a4;
     -fx-border-style: dashed;
     -fx-border-width: 2;
     -fx-border-radius: 6;
+}
+
+.ranura-dado:hover {
+    -fx-border-color: #bd93f9;
+}
+
+/* Gráficas */
+.chart-title {
+    -fx-text-fill: #f8f8f2;
+    -fx-font-size: 16px;
+}
+.chart-content {
+    -fx-padding: 8;
+}
+.chart-plot-background {
+    -fx-background-color: #21222c;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #44475a;
+}
+.axis {
+    -fx-tick-label-fill: #f8f8f2;
+}
+.axis-label {
+    -fx-text-fill: #f8f8f2;
+}
+.axis-tick-mark,
+.axis-minor-tick-mark {
+    -fx-stroke: #6272a4;
+}
+.chart-bar {
+    -fx-bar-fill: #bd93f9;
 }
