@@ -4,7 +4,6 @@ module com.example.practica3algoritmos {
 
     requires org.kordamp.ikonli.javafx;
     requires javafx.graphics;
-    requires com.example.practica3algoritmos;
     //requires com.example.practica3algoritmos;
 
     opens com.example.practica3algoritmos to javafx.fxml;

@@ -23,6 +23,7 @@ public class SeccionSalida extends Seccion {
         pilaPersonas = new GridPane();
         pilaPersonas.setHgap(2);
         pilaPersonas.setVgap(2);
+        pilaPersonas.getStyleClass().add("panel-jugador");
     }
 
     @Override

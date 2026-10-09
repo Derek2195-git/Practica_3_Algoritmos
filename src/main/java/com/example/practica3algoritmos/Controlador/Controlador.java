@@ -58,6 +58,7 @@ public class Controlador {
             debeLanzar = false;
         } else {
             juego.moverPersonas();
+            ventana.getSeccionSalida().redibujarSeccion();
             ventana.getSeccionJugadores().redibujarSeccion();
             ventana.actualizarLabelRonda(juego.getRondaActual());
             refrescarGraficaActual();
@@ -79,6 +80,7 @@ public class Controlador {
     private void manejarReinicio() {
         deseleccionar();
         juego.reiniciarJuego();
+        ventana.getSeccionSalida().redibujarSeccion();
         ventana.getSeccionJugadores().redibujarSeccion();
         ventana.actualizarLabelRonda(juego.getRondaActual());
 
