@@ -134,6 +134,11 @@ public class Controlador {
     }
 
     private void manejarClickDado(Jugador jugador, Dado dado) {
+        if (!debeLanzar) {
+            deseleccionar();
+            return;
+        }
+
         if (dado != null && dado == dadoSeleccionado) {
             deseleccionar();
             return;

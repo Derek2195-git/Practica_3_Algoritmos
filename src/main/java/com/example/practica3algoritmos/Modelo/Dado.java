@@ -13,12 +13,8 @@ public class Dado {
         valor = 1;
     }
 
-    private void lanzar() {
-        valor = rnd.nextInt(caras) + 1;
-    }
-
     public int tirarDado() {
-        lanzar();
+        valor = rnd.nextInt(caras) + 1;
         return valor;
     }
 

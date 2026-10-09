@@ -12,7 +12,7 @@ public class ColaCircular<T> {
     }
 
     public ColaCircular() {
-        objetos = (T[]) new Object[200];
+        objetos = (T[]) new Object[300];
         inicio = -1;
         fin = -1;
         cantidad = 0;

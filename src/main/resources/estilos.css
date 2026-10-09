@@ -96,7 +96,7 @@
     -fx-border-color: #ff79c6;
     -fx-border-width: 2;
     -fx-border-radius: 6;
-    -fx-effect: dropshadow(gaussian, rgba(255, 121, 198, 0.8), 8, 0.4, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(255, 145, 206, 0.8), 8, 0.4, 0, 0);
 }
 
 .ranura-dado {

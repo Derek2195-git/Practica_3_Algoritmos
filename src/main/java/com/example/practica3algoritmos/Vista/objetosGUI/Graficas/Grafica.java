@@ -9,7 +9,6 @@ import javafx.scene.chart.NumberAxis;
 import java.util.ArrayList;
 
 public abstract class Grafica {
-    // Al parecer los ejes son de la clase Number??
     protected BarChart<String, Number> grafica;
     protected CategoryAxis ejeX;
     protected NumberAxis ejeY;

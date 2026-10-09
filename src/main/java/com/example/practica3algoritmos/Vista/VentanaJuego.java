@@ -109,4 +109,5 @@ public class VentanaJuego {
     public void actualizarLabelRonda(int rondaActual) {
         labelRonda.setText("Ronda: " + rondaActual + " / 20");
     }
+
 }

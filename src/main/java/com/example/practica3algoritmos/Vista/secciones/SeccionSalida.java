@@ -2,6 +2,8 @@ package com.example.practica3algoritmos.Vista.secciones;
 
 import com.example.practica3algoritmos.Modelo.Persona;
 import com.example.practica3algoritmos.Vista.objetosGUI.PersonaGUI;
+import com.example.practica3algoritmos.Vista.objetosGUI.TipoFicha;
+import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class SeccionSalida extends Seccion {
         pilaPersonas = new GridPane();
         pilaPersonas.setHgap(2);
         pilaPersonas.setVgap(2);
+        pilaPersonas.setAlignment(Pos.BOTTOM_CENTER);
         pilaPersonas.getStyleClass().add("panel-jugador");
     }
 
@@ -35,8 +38,8 @@ public class SeccionSalida extends Seccion {
 
         for (int i = 0; i < total; i++) {
             Persona persona = personasSalidas.get(i);
-            PersonaGUI.TipoFicha tipo = persona.esPersonaBase() ?
-                    PersonaGUI.TipoFicha.BASE : PersonaGUI.TipoFicha.NORMAL;
+            TipoFicha tipo = persona.esPersonaBase() ?
+                    TipoFicha.BASE : TipoFicha.NORMAL;
 
             int columna = i % COLUMNAS;
             int filaDesdeAbajo = i / COLUMNAS;

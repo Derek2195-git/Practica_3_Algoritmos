@@ -72,13 +72,13 @@ public class PanelJugador {
         for (int i = 0; i < cantidadPersonas; i++) {
 
             Persona persona = jugador.getColaPersonas().peekObjeto(i);
-            PersonaGUI.TipoFicha tipo;
+            TipoFicha tipo;
             if (persona.esPersonaBase()) {
-                tipo = PersonaGUI.TipoFicha.BASE;
+                tipo = TipoFicha.BASE;
             } else if ((cantidadPersonas - i) <= cantidadPersonasMovidas) {
-                tipo = PersonaGUI.TipoFicha.MOVIDA;
+                tipo = TipoFicha.MOVIDA;
             } else {
-                tipo = PersonaGUI.TipoFicha.NORMAL;
+                tipo = TipoFicha.NORMAL;
             }
             contenedorPersonas.getChildren().add(
                     new PersonaGUI(TAMANO_PERSONA, tipo)
