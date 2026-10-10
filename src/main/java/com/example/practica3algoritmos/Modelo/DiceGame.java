@@ -27,7 +27,7 @@ public class DiceGame {
             if (j.getNumero() == 1) continue;
             for (int i = 0; i < 4; i++) {
                 j.getColaPersonas().insertarCircular(
-                        new Persona(++numeroSiguientePersona, 0));
+                        new Persona(0));
             }
         }
         historialPersonasEnSistema.add(calcularPersonasEnElSistema());
@@ -47,7 +47,7 @@ public class DiceGame {
             if (i == 0) {
                 for (int k = 0; k < valorDado; k++) {
                     jugadores.get(1).getColaPersonas().insertarCircular(
-                            new Persona(++numeroSiguientePersona, rondaActual));
+                            new Persona(rondaActual));
                 }
                 j.setPersonasMovidasEnRondaAnterior(valorDado);
                 j.añadirActividad(valorDado, valorDado);

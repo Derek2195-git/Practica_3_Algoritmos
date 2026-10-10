@@ -15,7 +15,7 @@ public class Jugador {
         this.numero = numero;
         dadoOriginalJugador = new Dado();
         dadosActuales = new ArrayList<>();
-        colaPersonas = new ColaCircular<>();
+        colaPersonas = new      ColaCircular<>();
         historialDados = new ArrayList<>();
         historialMovidas = new ArrayList<>();
         dadosActuales.add(dadoOriginalJugador);
